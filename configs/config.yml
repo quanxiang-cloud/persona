@@ -1,0 +1,51 @@
+# model 模式 debug|release
+# debug模式，可以输出更加详细的日志，但是运行速度会减慢
+model: debug
+
+port: :9022
+
+hostName: persona
+# 后端存储服务：es - elasticsearch; etc - etcd v3
+backendStorage: "es"
+
+#  -------------------- log --------------------
+# comply with zap log specification
+log:
+  level: -1
+  development: false
+  sampling:
+    initial: 100
+    thereafter: 100
+  outputPath:
+    - stderr
+  errorOutputPath:
+    - stderr
+
+#-------------------etcd配置-----------------
+etcd:
+  addrs:
+    - 192.168.200.18:2379
+    - 192.168.200.19:2379
+    - 192.168.200.20:2379
+  username:
+  password:
+  timeout: 5
+
+
+#  -------------------- internalNet --------------------
+internalNet:
+  timeout: 5
+  maxIdleConns: 10
+
+
+#-------------------es配置-----------------
+elasticsearch:
+  host:
+#      - http://127.0.0.1:9200
+      - http://es.qxp.alpha:80
+#      - http://192.168.200.18:9200
+  username: elastic
+  password: it3pPkewPEM1IpgSK7Xq
+  timeout: 5
+  cafingerprint:
+  defaultindex: "persona_kv"  # 初始化默认存储index
