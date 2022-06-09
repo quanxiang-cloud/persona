@@ -3,9 +3,9 @@ package db
 import (
 	"context"
 	"encoding/json"
-	"git.internal.yunify.com/qxp/misc/logger"
 	"git.internal.yunify.com/qxp/persona/pkg/config"
 	"git.internal.yunify.com/qxp/persona/pkg/db"
+	"git.internal.yunify.com/qxp/persona/pkg/misc/logger"
 
 	"go.etcd.io/etcd/clientv3"
 	"strings"

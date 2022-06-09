@@ -3,7 +3,6 @@ module git.internal.yunify.com/qxp/persona
 go 1.16
 
 require (
-	git.internal.yunify.com/qxp/misc v0.0.0-20211222120821-aade7ddbc0bb
 	github.com/coreos/bbolt v1.3.6 // indirect
 	github.com/coreos/etcd v3.3.25+incompatible // indirect
 	github.com/coreos/go-semver v0.3.0 // indirect
@@ -14,7 +13,9 @@ require (
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-logr/logr v1.2.2
 	github.com/go-logr/zapr v1.2.2
+	github.com/go-playground/validator/v10 v10.4.1
 	github.com/google/btree v1.0.1 // indirect
+	github.com/google/uuid v1.3.0
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect

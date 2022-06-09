@@ -2,11 +2,11 @@ package restful
 
 import (
 	"context"
-	"git.internal.yunify.com/qxp/misc/logger"
-	"git.internal.yunify.com/qxp/misc/resp"
 	"git.internal.yunify.com/qxp/persona/internal/persona"
 	"git.internal.yunify.com/qxp/persona/internal/server/options"
 	"git.internal.yunify.com/qxp/persona/pkg/config"
+	"git.internal.yunify.com/qxp/persona/pkg/misc/logger"
+	"git.internal.yunify.com/qxp/persona/pkg/misc/resp"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

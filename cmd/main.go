@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
-	"git.internal.yunify.com/qxp/misc/logger"
 	"git.internal.yunify.com/qxp/persona/api/restful"
 	"git.internal.yunify.com/qxp/persona/pkg/config"
 	"git.internal.yunify.com/qxp/persona/pkg/db/elasticsearch"
+	"git.internal.yunify.com/qxp/persona/pkg/misc/logger"
 	"github.com/go-logr/logr"
 	"github.com/go-logr/zapr"
 	"go.uber.org/zap"

@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"git.internal.yunify.com/qxp/misc/elastic2"
-	"git.internal.yunify.com/qxp/misc/logger"
 	"git.internal.yunify.com/qxp/persona/pkg/config"
 	"git.internal.yunify.com/qxp/persona/pkg/db"
+	"git.internal.yunify.com/qxp/persona/pkg/misc/elastic2"
+	"git.internal.yunify.com/qxp/persona/pkg/misc/logger"
 	"github.com/olivere/elastic/v7"
 )
 

@@ -3,13 +3,14 @@ package persona
 import (
 	"context"
 	"encoding/json"
-	"git.internal.yunify.com/qxp/misc/id2"
-	"git.internal.yunify.com/qxp/misc/time2"
+
 	"git.internal.yunify.com/qxp/persona/internal/model"
 	"git.internal.yunify.com/qxp/persona/internal/server/options"
 	"git.internal.yunify.com/qxp/persona/pkg/config"
 	"git.internal.yunify.com/qxp/persona/pkg/db"
 	"git.internal.yunify.com/qxp/persona/pkg/db/elasticsearch"
+	"git.internal.yunify.com/qxp/persona/pkg/misc/id2"
+	"git.internal.yunify.com/qxp/persona/pkg/misc/time2"
 	"git.internal.yunify.com/qxp/persona/pkg/utils"
 )
 

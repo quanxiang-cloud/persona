@@ -1,6 +1,6 @@
 package code
 
-import "git.internal.yunify.com/qxp/misc/error2"
+import "git.internal.yunify.com/qxp/persona/pkg/misc/error2"
 
 func init() {
 	error2.CodeTable = CodeTable

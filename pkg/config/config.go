@@ -1,11 +1,11 @@
 package config
 
 import (
-	"git.internal.yunify.com/qxp/misc/client"
+	"git.internal.yunify.com/qxp/persona/pkg/misc/client"
 	"io/ioutil"
 	"time"
 
-	"git.internal.yunify.com/qxp/misc/logger"
+	"git.internal.yunify.com/qxp/persona/pkg/misc/logger"
 	"gopkg.in/yaml.v2"
 )
 
