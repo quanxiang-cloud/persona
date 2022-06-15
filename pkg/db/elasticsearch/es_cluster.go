@@ -390,8 +390,8 @@ func (d *Elasticsearch) SearchWithKey(ctx context.Context, key string) (interfac
 
 		body = append(body,
 			ksv{
-				Key:     ss[1],
-				Version: ss[0],
+				Key:     ss[0],
+				Version: ss[1],
 			})
 	}
 
