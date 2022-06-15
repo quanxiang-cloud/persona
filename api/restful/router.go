@@ -2,6 +2,7 @@ package restful
 
 import (
 	"context"
+
 	"git.internal.yunify.com/qxp/persona/pkg/config"
 	"git.internal.yunify.com/qxp/persona/pkg/probe"
 	"github.com/gin-gonic/gin"
@@ -68,6 +69,8 @@ func NewRouter(c *config.Configs, log logr.Logger) (*Router, error) {
 		smAPI.POST("/getByCondition", p.getDataSetByCondition)
 		// 删除数据集
 		smAPI.POST("/delete", p.deleteDataSet)
+
+		smAPI.POST("/search/key", p.searchWithKey)
 	}
 	// 用户端API
 	suAPI := engine.Group("/api/v1/persona/dataset/home")

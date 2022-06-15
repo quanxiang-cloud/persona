@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"strings"
+
 	"git.internal.yunify.com/qxp/persona/pkg/config"
 	"git.internal.yunify.com/qxp/persona/pkg/db"
 	"git.internal.yunify.com/qxp/persona/pkg/misc/elastic2"
@@ -359,4 +361,38 @@ SEARCH:
 	}
 
 	return Resp, nil
+}
+
+func (d *Elasticsearch) SearchWithKey(ctx context.Context, key string) (interface{}, error) {
+	ql := d.client.Search().Index(d.esConfig.DefaultIndex)
+
+	result, err := ql.Query(elastic.NewPrefixQuery("key", key)).
+		FetchSourceContext(elastic.NewFetchSourceContext(true).Include("key")).
+		Size(500).
+		Do(ctx)
+
+	if err != nil {
+		return nil, err
+	}
+
+	type ksv struct {
+		Key     string `json:"key,omitempty"`
+		Version string `json:"version,omitempty"`
+	}
+
+	body := make([]ksv, 0, len(result.Hits.Hits))
+	for _, hit := range result.Hits.Hits {
+		ss := strings.SplitN(hit.Id, "_", 2)
+		if len(ss) != 2 {
+			continue
+		}
+
+		body = append(body,
+			ksv{
+				Key:     ss[1],
+				Version: ss[0],
+			})
+	}
+
+	return body, nil
 }

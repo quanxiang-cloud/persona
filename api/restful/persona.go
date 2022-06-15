@@ -2,13 +2,14 @@ package restful
 
 import (
 	"context"
+	"net/http"
+
 	"git.internal.yunify.com/qxp/persona/internal/persona"
 	"git.internal.yunify.com/qxp/persona/internal/server/options"
 	"git.internal.yunify.com/qxp/persona/pkg/config"
 	"git.internal.yunify.com/qxp/persona/pkg/misc/logger"
 	"git.internal.yunify.com/qxp/persona/pkg/misc/resp"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 // Persona Persona
@@ -151,4 +152,14 @@ func (p *Persona) deleteDataSet(c *gin.Context) {
 		return
 	}
 	resp.Format(p.persona.DeleteDataSet(logger.CTXTransfer(c), req)).Context(c)
+}
+
+// searchWithKey 查询KV
+func (p *Persona) searchWithKey(c *gin.Context) {
+	req := &persona.SearchWithKeyReq{}
+	if err := c.ShouldBind(req); err != nil {
+		c.AbortWithError(http.StatusInternalServerError, err)
+		return
+	}
+	resp.Format(p.persona.SearchWithKey(logger.CTXTransfer(c), req)).Context(c)
 }

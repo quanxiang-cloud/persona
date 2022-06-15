@@ -3,13 +3,15 @@ package db
 import (
 	"context"
 	"encoding/json"
+
 	"git.internal.yunify.com/qxp/persona/pkg/config"
 	"git.internal.yunify.com/qxp/persona/pkg/db"
 	"git.internal.yunify.com/qxp/persona/pkg/misc/logger"
 
-	"go.etcd.io/etcd/clientv3"
 	"strings"
 	"time"
+
+	"go.etcd.io/etcd/clientv3"
 )
 
 // Etcd etcd
@@ -204,4 +206,8 @@ func (d *Etcd) removePrefix3(userID string, version string, key string) string {
 		return key[len(pre):]
 	}
 	return key
+}
+
+func (d *Etcd) SearchWithKey(ctx context.Context, key string) (interface{}, error) {
+	return nil, nil
 }

@@ -19,6 +19,7 @@ type BackendStorage interface {
 	UpdateData(ctx *context.Context, key *string, value interface{}) error
 	GetDataByKVs(ctx *context.Context, kvs *map[string]interface{}) ([]*json.RawMessage, error)
 	DeleteData(ctx *context.Context, key *string) error
+	SearchWithKey(ctx context.Context, key string) (interface{}, error)
 }
 
 // Kv Kv
