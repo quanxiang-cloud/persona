@@ -71,6 +71,7 @@ func NewRouter(c *config.Configs, log logr.Logger) (*Router, error) {
 		smAPI.POST("/delete", p.deleteDataSet)
 
 		smAPI.POST("/search/key", p.searchWithKey)
+		smAPI.POST("/bulk/delete", p.deleteWithKey)
 	}
 	// 用户端API
 	suAPI := engine.Group("/api/v1/persona/dataset/home")

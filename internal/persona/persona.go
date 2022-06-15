@@ -30,6 +30,7 @@ type Persona interface {
 	GetByConditionSet(c context.Context, req *GetByConditionSetReq) (*GetByConditionSetResp, error)
 	DeleteDataSet(c context.Context, req *DeleteDataSetReq) (*DeleteDataSetResp, error)
 	SearchWithKey(ctx context.Context, req *SearchWithKeyReq) (SearchWithKeyResp, error)
+	DeleteWithKey(ctx context.Context, req *DeleteWithKeyReq) (DeleteWithKeyResp, error)
 }
 
 type persona struct {
@@ -239,6 +240,20 @@ type SearchWithKeyResp interface{}
 // SearchWithKey SearchWithKey
 func (p *persona) SearchWithKey(ctx context.Context, req *SearchWithKeyReq) (SearchWithKeyResp, error) {
 	return p.daoRepo.SearchWithKey(ctx, req.Key)
+}
+
+//  DeleteWithKeyReq req
+type DeleteWithKeyReq struct {
+	Key string `json:"key,omitempty"`
+}
+
+// DeleteWithKeyResp resp
+type DeleteWithKeyResp interface{}
+
+// DeleteWithKey DeleteWithKey
+func (p *persona) DeleteWithKey(ctx context.Context, req *DeleteWithKeyReq) (DeleteWithKeyResp, error) {
+	err := p.daoRepo.DeleteWithKey(ctx, req.Key)
+	return nil, err
 }
 
 // ExportDataReq req

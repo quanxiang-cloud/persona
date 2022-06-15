@@ -363,6 +363,7 @@ SEARCH:
 	return Resp, nil
 }
 
+// SearchWithKey search key and version  with key
 func (d *Elasticsearch) SearchWithKey(ctx context.Context, key string) (interface{}, error) {
 	ql := d.client.Search().Index(d.esConfig.DefaultIndex)
 
@@ -395,4 +396,27 @@ func (d *Elasticsearch) SearchWithKey(ctx context.Context, key string) (interfac
 	}
 
 	return body, nil
+}
+
+// DeleteWithKey delete with key
+func (d *Elasticsearch) DeleteWithKey(ctx context.Context, key string) error {
+	ql := d.client.Search().Index(d.esConfig.DefaultIndex)
+
+	result, err := ql.Query(elastic.NewPrefixQuery("key", key)).
+		FetchSourceContext(elastic.NewFetchSourceContext(true).Include("key")).
+		Size(500).
+		Do(ctx)
+
+	if err != nil {
+		return err
+	}
+
+	for _, hit := range result.Hits.Hits {
+		_, _ = d.client.Delete().
+			Index(d.esConfig.DefaultIndex).
+			Id(hit.Id).
+			Do(ctx)
+	}
+
+	return nil
 }

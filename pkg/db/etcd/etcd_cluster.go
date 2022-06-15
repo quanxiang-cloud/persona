@@ -208,6 +208,12 @@ func (d *Etcd) removePrefix3(userID string, version string, key string) string {
 	return key
 }
 
+// SearchWithKey SearchWithKey
 func (d *Etcd) SearchWithKey(ctx context.Context, key string) (interface{}, error) {
 	return nil, nil
+}
+
+// DeleteWithKey DeleteWithKey
+func (d *Etcd) DeleteWithKey(ctx context.Context, key string) error {
+	return nil
 }

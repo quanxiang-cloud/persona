@@ -163,3 +163,13 @@ func (p *Persona) searchWithKey(c *gin.Context) {
 	}
 	resp.Format(p.persona.SearchWithKey(logger.CTXTransfer(c), req)).Context(c)
 }
+
+// deleteWithKey 删除
+func (p *Persona) deleteWithKey(c *gin.Context) {
+	req := &persona.DeleteWithKeyReq{}
+	if err := c.ShouldBind(req); err != nil {
+		c.AbortWithError(http.StatusInternalServerError, err)
+		return
+	}
+	resp.Format(p.persona.DeleteWithKey(logger.CTXTransfer(c), req)).Context(c)
+}
